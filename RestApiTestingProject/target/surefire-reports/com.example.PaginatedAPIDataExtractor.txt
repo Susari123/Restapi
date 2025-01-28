@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.example.PaginatedAPIDataExtractor
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.409 s <<< FAILURE! -- in com.example.PaginatedAPIDataExtractor
+com.example.PaginatedAPIDataExtractor.testFetchAllClaimsData -- Time elapsed: 3.373 s <<< ERROR!
+java.lang.RuntimeException: API call failed! Expected 200 but got 500
+	at com.example.PaginatedAPIDataExtractor.testFetchAllClaimsData(PaginatedAPIDataExtractor.java:76)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
