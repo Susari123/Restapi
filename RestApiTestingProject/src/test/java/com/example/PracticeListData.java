@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -43,9 +44,24 @@ public class PracticeListData {
         // Parse JSON Response
         String responseBody = response.asString();
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // Pretty-print JSON
 
         // Read JSON Response into JsonNode
         JsonNode rootNode = objectMapper.readTree(responseBody);
+
+        // Print formatted JSON response
+        String formattedJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(rootNode);
+        System.out.println("Full JSON Response:\n" + formattedJson);
+
+        // Save formatted JSON to a file
+        String jsonOutputPath = "src/test/resources/output/FullResponse.json";
+        try (FileWriter jsonWriter = new FileWriter(jsonOutputPath)) {
+            jsonWriter.write(formattedJson);
+            System.out.println("Full JSON Response saved to file: " + jsonOutputPath);
+        } catch (IOException e) {
+            System.err.println("Error writing JSON response to file: " + e.getMessage());
+            throw e;
+        }
 
         // Search for the specific email and extract OTP
         String targetEmail = "edara@edvak.com";
@@ -66,11 +82,11 @@ public class PracticeListData {
             System.err.println("OTP not found for email: " + targetEmail);
         }
 
-        // Optional: Save extracted OTP to a file
-        String outputFilePath = "src/test/resources/output/ExtractedOTP.txt";
-        try (FileWriter fileWriter = new FileWriter(outputFilePath)) {
-            fileWriter.write("OTP for email " + targetEmail + ": " + otp);
-            System.out.println("Extracted OTP saved to file: " + outputFilePath);
+        // Save extracted OTP to a file
+        String otpOutputPath = "src/test/resources/output/ExtractedOTP.txt";
+        try (FileWriter otpWriter = new FileWriter(otpOutputPath)) {
+            otpWriter.write("OTP for email " + targetEmail + ": " + otp);
+            System.out.println("Extracted OTP saved to file: " + otpOutputPath);
         } catch (IOException e) {
             System.err.println("Error writing OTP to file: " + e.getMessage());
             throw e;
