@@ -1,0 +1,7 @@
+com\api\test\mrnpost$RequestData.class
+APIRestAssure\src\test\java\com\api\test\Test.class
+com\api\test\getfavorites$RequestFav.class
+com\api\test\cpt.class
+com\api\test\PatientAPITest.class
+com\api\test\getfavorites.class
+com\api\test\mrnpost.class

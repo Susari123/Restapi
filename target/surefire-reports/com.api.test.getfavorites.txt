@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.api.test.getfavorites
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 69.674 s - in com.api.test.getfavorites
